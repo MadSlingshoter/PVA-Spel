@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: bg_08_grey_16
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: -2112839673, guid: 11d3250d7477304408f789808c45412f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9056604, g: 0.8834461, b: 0.8834461, a: 1}
   m_Transform:
     e00: 1
     e01: 0

@@ -14,6 +14,8 @@ public class CameraMovement : MonoBehaviour
     public float maxZoom = 10f;
     public float zoomLimiter = 50f;
 
+    public Vector3 minvalue,maxvalue;
+
     private Vector3  velocity;
 
     private Camera cam;
@@ -37,11 +39,14 @@ public class CameraMovement : MonoBehaviour
     }
         void Move() { 
         Vector3 centerPoint = GetCenterPoint();
-        Debug.Log(centerPoint);
-
         Vector3 newPosition = centerPoint + offset;
 
-        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
+        Vector3 boundPosition = new Vector3(
+            Mathf.Clamp(newPosition.x, minvalue.x, maxvalue.x),
+            Mathf.Clamp(newPosition.y, minvalue.y, maxvalue.y),
+            Mathf.Clamp(newPosition.z, minvalue.z, maxvalue.z));
+
+        transform.position = Vector3.SmoothDamp(transform.position, boundPosition, ref velocity, smoothTime);
     }
 
     void Zoom()

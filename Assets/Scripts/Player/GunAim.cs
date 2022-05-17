@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class GunAim : MonoBehaviour
 {
+    [SerializeField] private float gunRefireRate;
+
+    private float gunFireTimer = 0;
+
     private int facingDir = 1;
 
     // Update is called once per frame
@@ -9,6 +13,7 @@ public class GunAim : MonoBehaviour
     {
         facingUpdate();
         aimAngle();
+        shootGun();
     }
 
     private void facingUpdate()
@@ -38,6 +43,21 @@ public class GunAim : MonoBehaviour
             angle *= -1;
 
         transform.eulerAngles = Vector3.forward * angle * facingDir;
+
+    }
+
+    private void shootGun()
+    {
+        gunFireTimer += Time.deltaTime;
+        if (gunFireTimer >= gunRefireRate)
+        {
+            gunFireTimer = 0;
+            FireGun();
+        }
+    }
+
+    private void FireGun()
+    {
 
     }
 }

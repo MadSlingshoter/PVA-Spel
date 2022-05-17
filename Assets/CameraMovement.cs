@@ -37,6 +37,7 @@ public class CameraMovement : MonoBehaviour
     }
         void Move() { 
         Vector3 centerPoint = GetCenterPoint();
+        Debug.Log(centerPoint);
 
         Vector3 newPosition = centerPoint + offset;
 
@@ -48,10 +49,7 @@ public class CameraMovement : MonoBehaviour
         
         float newZoom = Mathf.Lerp(maxZoom, minZoom, GetGreatestDistance() / zoomLimiter);
         cam.fieldOfView = newZoom;
-        
        
-
-
      
     }
     

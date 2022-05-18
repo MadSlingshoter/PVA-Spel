@@ -12,6 +12,12 @@ public class PlayerMovement : MonoBehaviour
     private bool grounded;
     private bool m_FacingRight = true;
 
+    //Controls
+    [SerializeField] private KeyCode right;
+    [SerializeField] private KeyCode left;
+    [SerializeField] private KeyCode jump;
+
+
     private void Awake()
     {
         // Grab references
@@ -23,28 +29,36 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        float horizontalInput = Input.GetAxis("HorizontalPlayer1");
-        body.velocity = new Vector2(Input.GetAxis("HorizontalPlayer1") * speed, body.velocity.y);
+        float direction = 0;
+        if (Input.GetKey(left))
+        {
+            direction = -1f;
+        }
+        if (Input.GetKey(right))
+        {
+            direction = 1f;
+        }
+        body.velocity = new Vector2(direction * speed, body.velocity.y);
 
         // Player direction
-        if (horizontalInput > 0f && !m_FacingRight)
+        if (Input.GetKey(right) && !m_FacingRight)
         {
             Flip();
         }
-        else if (horizontalInput < 0 && m_FacingRight)
+        else if (Input.GetKey(left) && m_FacingRight)
         {
             Flip();
         }
 
         // Jumping
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(jump))
         {
             if (grounded)
                 Jump();
         }
 
         // Set animator parameters
-        animator.SetBool("walking", horizontalInput != 0);
+        animator.SetBool("walking", Input.GetKey(left) || Input.GetKey(right));
         animator.SetBool("grounded", grounded);
     }
 

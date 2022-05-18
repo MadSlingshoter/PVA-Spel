@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player2Movement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpSpeed;
@@ -17,19 +17,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        float horizontalInput = Input.GetAxis("HorizontalPlayer1");
-        body.velocity = new Vector2(Input.GetAxis("HorizontalPlayer1") * speed, body.velocity.y);
+        float horizontalInput = Input.GetAxis("HorizontalPlayer2");
+        body.velocity = new Vector2(Input.GetAxis("HorizontalPlayer2") * speed, body.velocity.y);
 
         // Player direction
-        if(horizontalInput > 0.01f)
+        if (horizontalInput > 0.01f)
         {
             transform.localScale = Vector3.one;
-        } else if (horizontalInput < -0.01f) {
+        }
+        else if (horizontalInput < -0.01f)
+        {
             transform.localScale = new Vector3(-1, 1, 1);
         }
 
         // Jumping
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.C))
         {
             if (grounded)
                 Jump();

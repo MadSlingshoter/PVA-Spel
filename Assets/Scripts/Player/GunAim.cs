@@ -13,7 +13,7 @@ public class GunAim : MonoBehaviour
 
     private void facingUpdate()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
+        float horizontalInput = Input.GetAxis("HorizontalPlayer1");
         if (horizontalInput > 0.01f)
             facingDir = 1;
         else if (horizontalInput < -0.01f)
@@ -23,8 +23,8 @@ public class GunAim : MonoBehaviour
     // Aiming direction of gun
     private void aimAngle()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        float horizontalInput = Input.GetAxis("HorizontalPlayer1");
+        float verticalInput = Input.GetAxis("VerticalPlayer1");
         int angle = 0;
 
         if (horizontalInput != 0 && verticalInput != 0)

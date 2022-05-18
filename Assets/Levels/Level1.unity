@@ -14003,7 +14003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targets:
   - {fileID: 1971865990}
-  - {fileID: 0}
+  - {fileID: 864150436}
   offset: {x: 0, y: 2.48, z: -8.78}
   smoothTime: 0.5
   minZoom: 150
@@ -14245,6 +14245,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c1cb5a5c1f28b43b39999dc025f417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  right: 100
+  left: 97
+  up: 119
+  down: 115
 --- !u!114 &700012208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14259,7 +14263,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firepoint: {fileID: 1157741032}
   gunFireRate: 0.5
-  gameObjectPool: {fileID: 1975550246}
+  bulletPool: {fileID: 1975550246}
+  missileFireRate: 5
+  missilePool: {fileID: 945121031}
+  Fire1: 120
+  Fire2: 118
 --- !u!1 &864150430
 GameObject:
   m_ObjectHideFlags: 0
@@ -14334,6 +14342,9 @@ MonoBehaviour:
   maxHealth: 100
   healthBar: {fileID: 1463276633}
   currentHealth: 0
+  right: 275
+  left: 276
+  jump: 111
 --- !u!50 &864150434
 Rigidbody2D:
   serializedVersion: 4
@@ -14423,6 +14434,52 @@ Transform:
   - {fileID: 2059959670}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &945121030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 945121032}
+  - component: {fileID: 945121031}
+  m_Layer: 0
+  m_Name: MissilePool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &945121031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945121030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 856f8a27f1ee1d14c832a1ad15ce5b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 337495518374655708, guid: 6d87dc5a9b5e99643ac5bf0c8c008341, type: 3}
+  amountToPool: 10
+--- !u!4 &945121032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945121030}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.25284, y: 3.9070957, z: 0.25496936}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1157741031
 GameObject:
@@ -14606,7 +14663,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firepoint: {fileID: 1774529552}
   gunFireRate: 0.5
-  gameObjectPool: {fileID: 1975550246}
+  bulletPool: {fileID: 1975550246}
+  missileFireRate: 5
+  missilePool: {fileID: 945121031}
+  Fire1: 112
+  Fire2: 105
 --- !u!114 &1441050557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14619,6 +14680,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c1cb5a5c1f28b43b39999dc025f417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  right: 275
+  left: 276
+  up: 273
+  down: 274
 --- !u!212 &1441050558
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -53991,6 +54056,9 @@ MonoBehaviour:
   maxHealth: 100
   healthBar: {fileID: 1631240835}
   currentHealth: 0
+  right: 100
+  left: 97
+  jump: 99
 --- !u!95 &1971865994
 Animator:
   serializedVersion: 4

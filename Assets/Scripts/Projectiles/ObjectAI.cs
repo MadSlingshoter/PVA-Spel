@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectAI : MonoBehaviour
+public class ObjectAI : MonoBehaviour, IGameObjectPooled
 {
 
     private Transform player;
@@ -11,7 +11,23 @@ public class ObjectAI : MonoBehaviour
     [SerializeField] private float travelSpeed = 2f;
     [SerializeField] private float rotateSpeed = 100f;
 
-    void Start()
+    private ObjectPool pool;
+    public ObjectPool Pool
+    {
+        get
+        {
+            return pool;
+        }
+        set
+        {
+            if (pool == null)
+            {
+                pool = value;
+            }
+        }
+    }
+
+    public void OnObjectSpawn()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
@@ -31,7 +47,8 @@ public class ObjectAI : MonoBehaviour
         if (collision.tag == "Player")
         {
             //Instantiate(explosion, transform.position, transform.rotation);
-            Destroy(gameObject);
+            // Player object thing with damage
+            pool.ReturnToPool(this.gameObject);
         }
     }
 

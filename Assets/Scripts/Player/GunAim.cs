@@ -9,11 +9,12 @@ public class GunAim : MonoBehaviour
         aimAngle();
     }
 
+
     // Aiming direction of gun
     private void aimAngle()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        float horizontalInput = Input.GetAxis("HorizontalPlayer1");
+        float verticalInput = Input.GetAxis("VerticalPlayer1");
         int angle = 0;
 
         if (horizontalInput != 0 && verticalInput != 0)

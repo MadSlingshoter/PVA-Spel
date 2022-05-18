@@ -14264,7 +14264,7 @@ GameObject:
   - component: {fileID: 1535888863}
   - component: {fileID: 1535888862}
   - component: {fileID: 1535888861}
-  - component: {fileID: 1535888860}
+  - component: {fileID: 1535888864}
   - component: {fileID: 1535888859}
   - component: {fileID: 1535888858}
   m_Layer: 0
@@ -14310,20 +14310,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1535888860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1535888857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25cc2ba864ff80441a7ea6ec8be53ba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 7
-  jumpSpeed: 7
 --- !u!50 &1535888861
 Rigidbody2D:
   serializedVersion: 4
@@ -14413,6 +14399,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1535888864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535888857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf72ddd6564cae48bde28a89ac2ec2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7
+  jumpSpeed: 7
 --- !u!1 &1652204283
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class GunShoot : MonoBehaviour
 {
+    public Transform firepoint;
+    public GameObject bulletPrefab;
     [SerializeField] private float gunFireRate;
-    private GunAim gunAim;
-    private float gunCooldownTimer = Mathf.Infinity;
-
-    // 
-    void Awake()
-    {
-        gunAim = GetComponent<GunAim>();
-    }
+    private float gunCooldownTimer = 0;
 
     // Update is called once per frame
     void Update()
@@ -28,5 +23,6 @@ public class GunShoot : MonoBehaviour
     private void FireGun()
     {
         gunCooldownTimer = 0;
+        Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
     }
 }

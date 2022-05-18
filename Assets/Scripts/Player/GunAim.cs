@@ -2,23 +2,13 @@ using UnityEngine;
 
 public class GunAim : MonoBehaviour
 {
-    private int facingDir = 1;
 
     // Update is called once per frame
     void Update()
     {
-        facingUpdate();
         aimAngle();
     }
 
-    private void facingUpdate()
-    {
-        float horizontalInput = Input.GetAxis("HorizontalPlayer1");
-        if (horizontalInput > 0.01f)
-            facingDir = 1;
-        else if (horizontalInput < -0.01f)
-            facingDir = -1;
-    }
 
     // Aiming direction of gun
     private void aimAngle()
@@ -37,7 +27,6 @@ public class GunAim : MonoBehaviour
         if (verticalInput < -0.01f)
             angle *= -1;
 
-        transform.eulerAngles = Vector3.forward * angle * facingDir;
-
+        transform.localEulerAngles = new Vector3(0, 0, angle);
     }
 }

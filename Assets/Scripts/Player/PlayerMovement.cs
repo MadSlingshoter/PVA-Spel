@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     private Animator animator;
     private bool grounded;
+    private bool m_FacingRight = true;
 
     private void Awake()
     {
@@ -21,11 +22,13 @@ public class PlayerMovement : MonoBehaviour
         body.velocity = new Vector2(Input.GetAxis("HorizontalPlayer1") * speed, body.velocity.y);
 
         // Player direction
-        if(horizontalInput > 0.01f)
+        if (horizontalInput > 0f && !m_FacingRight)
         {
-            transform.localScale = Vector3.one;
-        } else if (horizontalInput < -0.01f) {
-            transform.localScale = new Vector3(-1, 1, 1);
+            Flip();
+        }
+        else if (horizontalInput < 0 && m_FacingRight)
+        {
+            Flip();
         }
 
         // Jumping
@@ -44,6 +47,13 @@ public class PlayerMovement : MonoBehaviour
     {
         body.velocity = new Vector2(body.velocity.x, jumpSpeed);
         grounded = false;
+    }
+
+    // Rotates player
+    private void Flip()
+    {
+        m_FacingRight = !m_FacingRight;
+        transform.Rotate(0f, 180f, 0f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

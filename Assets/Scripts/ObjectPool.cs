@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    public static ObjectPool SharedInstance;
-    public List<GameObject> pooledObjects;
-    public GameObject objectToPool;
-    public int amountToPool;
+    public static ObjectPool SharedInstance { get; private set; }
+    private Queue<GameObject> pooledObjects = new Queue<GameObject>();
+    [SerializeField] private GameObject prefab;
+    [SerializeField] private int amountToPool;
 
     private void Awake()
     {
@@ -17,31 +17,34 @@ public class ObjectPool : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pooledObjects = new List<GameObject>();
+        AddObjects(amountToPool);
+    }
+
+    public GameObject Get()
+    {
+        if (pooledObjects.Count == 0)
+        {
+            AddObjects(1);
+        }
+
+        return pooledObjects.Dequeue();
+    }
+
+    private void AddObjects(int count)
+    {
         GameObject tmp;
         for (int i = 0; i < amountToPool; i++)
         {
-            tmp = Instantiate(objectToPool);
+            tmp = Instantiate(prefab);
             tmp.SetActive(false);
-            pooledObjects.Add(tmp);
+            pooledObjects.Enqueue(tmp);
+            tmp.GetComponent<IGameObjectPooled>().Pool = this;
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ReturnToPool (GameObject objectToReturn)
     {
-        
-    }
-
-    public GameObject GetPooledObject()
-    {
-        for (int i = 0; i < amountToPool; i++)
-        {
-            if (!pooledObjects[i].activeInHierarchy)
-            {
-                return pooledObjects[i];
-            }
-        }
-        return null;
+        objectToReturn.SetActive(false);
+        pooledObjects.Enqueue(objectToReturn);
     }
 }

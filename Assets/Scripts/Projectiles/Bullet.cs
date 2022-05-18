@@ -2,13 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, IGameObjectPooled
 {
     [SerializeField] private float speed = 20f;
     private bool hit;
     private Rigidbody2D rb;
 
-    private void Start()
+    private ObjectPool pool;
+    public ObjectPool Pool
+    {
+        get
+        {
+            return pool;
+        }
+        set
+        {
+            if (pool == null)
+            {
+                pool = value;
+            }
+        }
+    }
+
+    public void OnObjectSpawn()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * speed;
@@ -25,6 +41,6 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
         // Player object thing with damage
-        Destroy(gameObject);
+        pool.ReturnToPool(this.gameObject);
     }
 }

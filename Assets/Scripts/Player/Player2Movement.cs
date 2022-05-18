@@ -1,13 +1,12 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player2Movement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpSpeed;
     private Rigidbody2D body;
     private Animator animator;
     private bool grounded;
-    private bool m_FacingRight = true;
 
     private void Awake()
     {
@@ -18,21 +17,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        float horizontalInput = Input.GetAxis("HorizontalPlayer1");
-        body.velocity = new Vector2(Input.GetAxis("HorizontalPlayer1") * speed, body.velocity.y);
+        float horizontalInput = Input.GetAxis("HorizontalPlayer2");
+        body.velocity = new Vector2(Input.GetAxis("HorizontalPlayer2") * speed, body.velocity.y);
 
         // Player direction
-        if (horizontalInput > 0f && !m_FacingRight)
+        if (horizontalInput > 0.01f)
         {
-            Flip();
+            transform.localScale = Vector3.one;
         }
-        else if (horizontalInput < 0 && m_FacingRight)
+        else if (horizontalInput < -0.01f)
         {
-            Flip();
+            transform.localScale = new Vector3(-1, 1, 1);
         }
 
         // Jumping
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.C))
         {
             if (grounded)
                 Jump();
@@ -47,13 +46,6 @@ public class PlayerMovement : MonoBehaviour
     {
         body.velocity = new Vector2(body.velocity.x, jumpSpeed);
         grounded = false;
-    }
-
-    // Rotates player
-    private void Flip()
-    {
-        m_FacingRight = !m_FacingRight;
-        transform.Rotate(0f, 180f, 0f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

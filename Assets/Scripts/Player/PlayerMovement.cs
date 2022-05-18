@@ -4,6 +4,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpSpeed;
+    [SerializeField] public int maxHealth = 100;
+    [SerializeField] HealthBar healthBar;
+    public int currentHealth;
     private Rigidbody2D body;
     private Animator animator;
     private bool grounded;
@@ -14,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
         // Grab references
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        currentHealth = maxHealth;
+        healthBar.SetHealth(currentHealth);
     }
 
     private void Update()
@@ -62,5 +67,15 @@ public class PlayerMovement : MonoBehaviour
         {
             grounded = true;
         }
+        if (collision.gameObject.tag == "Bullet")
+        {
+            TakeDamage(10);
+        }
     }
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+    }
+
 }

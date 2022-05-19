@@ -88,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        SoundManagerScript.PlaySound("hit");
         healthBar.SetHealth(currentHealth);
     }
 

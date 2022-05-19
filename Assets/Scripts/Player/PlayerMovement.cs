@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float jumpSpeed;
     [SerializeField] public int maxHealth = 100;
+    [SerializeField] public int startHealth = 100;
     [SerializeField] HealthBar healthBar;
     [SerializeField] ScoreBoard scoreBoard;
     public int currentHealth;
@@ -24,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         // Grab references
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        currentHealth = maxHealth;
+        currentHealth = startHealth;
         healthBar.SetHealth(currentHealth);
     }
 
@@ -110,4 +111,13 @@ public class PlayerMovement : MonoBehaviour
         transform.position = transform.position = new Vector3(7.75f, 14.26f, 0);
     }
 
+    public void GainHealth(int heal)
+    {
+        currentHealth += heal;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        healthBar.SetHealth(currentHealth);
+    }
 }

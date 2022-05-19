@@ -8,10 +8,14 @@ public class CountDown_Start : MonoBehaviour
 
 float cntdnw = 4.0f;
 public Text disvar;
+    public GameObject player2;
+    public GameObject player1;
 
 void Start(){
     Update();
-}
+        player2.SetActive(false);
+        player1.SetActive(false);
+    }
 
 void Update() 
 { 
@@ -31,7 +35,10 @@ void Update()
   }
   if (cntdnw < 0.5){
       disvar.text = "";
-  }
+            player2.SetActive(true);
+            player1.SetActive(true);
+
+        }
   
 }
 }

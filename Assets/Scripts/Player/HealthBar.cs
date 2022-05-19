@@ -13,7 +13,6 @@ public class HealthBar : MonoBehaviour
     private void Start()
     {
         text.text = "100";
-        player = GameObject.Find("Player");
     }
     void Update()
     {

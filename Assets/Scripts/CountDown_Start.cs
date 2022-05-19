@@ -27,7 +27,10 @@ void Update()
   }    
   if(cntdnw < 1)     
   {         
-    disvar.text = "GO!"; 
+    disvar.text = "GO!";
+  }
+  if (cntdnw < 0.5){
+      disvar.text = "";
   }
   
 }

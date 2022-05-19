@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour, IGameObjectPooled
 {
     [SerializeField] private float speed = 20f;
-    [SerializeField] private int damage = 20;
+    [SerializeField] private int damage = 10;
     private bool hit;
     private Rigidbody2D rb;
 

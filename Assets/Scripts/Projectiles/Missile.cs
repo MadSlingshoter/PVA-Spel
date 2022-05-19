@@ -7,11 +7,11 @@ public class Missile : MonoBehaviour, IGameObjectPooled
 
     private Transform player;
     private Rigidbody2D rb;
-    //public GameObject explosion;
     [SerializeField] private float travelSpeed = 2f;
     [SerializeField] private float rotateSpeed = 100f;
     [SerializeField] private float untrackTime = 2f;
     private float lifetime = 0;
+    [SerializeField] private int damage = 30;
 
     private ObjectPool pool;
     public ObjectPool Pool
@@ -75,8 +75,13 @@ public class Missile : MonoBehaviour, IGameObjectPooled
         return closest;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D hitInfo)
     {
+        PlayerMovement player = hitInfo.GetComponent<PlayerMovement>();
+        if (player != null)
+        {
+            player.TakeDamage(damage);
+        }
         pool.ReturnToPool(this.gameObject);
     }
 

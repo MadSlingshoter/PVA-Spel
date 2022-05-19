@@ -139,3 +139,4 @@ MonoBehaviour:
   travelSpeed: 5
   rotateSpeed: 200
   untrackTime: 1
+  damage: 100

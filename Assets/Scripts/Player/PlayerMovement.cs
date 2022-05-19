@@ -96,8 +96,12 @@ public class PlayerMovement : MonoBehaviour
         if (currentHealth <= 0)
         {
             scoreBoard.setScore();
+            SoundManagerScript.PlaySound("death");
             Respawn();
             currentHealth = 100;
+        } else
+        {
+            SoundManagerScript.PlaySound("hit");
         }
         healthBar.SetHealth(currentHealth);
     }

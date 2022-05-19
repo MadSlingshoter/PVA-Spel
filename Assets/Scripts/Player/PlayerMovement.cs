@@ -96,9 +96,14 @@ public class PlayerMovement : MonoBehaviour
         if (currentHealth <= 0)
         {
             scoreBoard.setScore();
+            Respawn();
             currentHealth = 100;
         }
         healthBar.SetHealth(currentHealth);
+    }
+    public void Respawn()
+    {
+        transform.position = transform.position = new Vector3(7.75f, 14.26f, 0);
     }
 
 }

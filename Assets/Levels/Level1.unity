@@ -14650,8 +14650,8 @@ MonoBehaviour:
   bulletPool: {fileID: 1975550246}
   missileFireRate: 2
   missilePool: {fileID: 945121031}
-  Fire1: 120
-  Fire2: 118
+  Fire1: 306
+  Fire2: 308
 --- !u!1 &832055021
 GameObject:
   m_ObjectHideFlags: 0
@@ -14807,7 +14807,7 @@ MonoBehaviour:
   currentHealth: 0
   right: 275
   left: 276
-  jump: 111
+  jump: 303
 --- !u!50 &864150434
 Rigidbody2D:
   serializedVersion: 4
@@ -15270,8 +15270,8 @@ MonoBehaviour:
   bulletPool: {fileID: 1975550246}
   missileFireRate: 2
   missilePool: {fileID: 945121031}
-  Fire1: 112
-  Fire2: 105
+  Fire1: 305
+  Fire2: 307
 --- !u!114 &1441050557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55776,7 +55776,7 @@ MonoBehaviour:
   currentHealth: 0
   right: 100
   left: 97
-  jump: 99
+  jump: 304
 --- !u!95 &1971865994
 Animator:
   serializedVersion: 4

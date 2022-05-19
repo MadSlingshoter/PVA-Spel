@@ -5,6 +5,7 @@ using UnityEngine;
 public class GunShoot : MonoBehaviour
 {
     [SerializeField] private Transform firepoint;
+
     [SerializeField] private float gunFireRate;
     private float gunCooldownTimer = Mathf.Infinity;
     [SerializeField] private ObjectPool bulletPool;
@@ -31,6 +32,8 @@ public class GunShoot : MonoBehaviour
         {
             FireMissile();
         }
+
+        missileCooldownTimer += Time.deltaTime;
     }
 
     private void FireGun()
@@ -43,6 +46,9 @@ public class GunShoot : MonoBehaviour
 
     private void FireMissile()
     {
-
+        missileCooldownTimer = 0;
+        var missile = missilePool.Get();
+        missile.transform.SetPositionAndRotation(firepoint.position, firepoint.rotation);
+        missile.SetActive(true);
     }
 }

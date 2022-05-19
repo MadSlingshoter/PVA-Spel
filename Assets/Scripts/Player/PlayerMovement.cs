@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpSpeed;
     [SerializeField] public int maxHealth = 100;
     [SerializeField] HealthBar healthBar;
+    [SerializeField] ScoreBoard scoreBoard;
     public int currentHealth;
     private Rigidbody2D body;
     private Animator animator;
@@ -88,6 +89,10 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        if (currentHealth <= 0) {
+            scoreBoard.setScore();
+            currentHealth = 100;
+        }
         healthBar.SetHealth(currentHealth);
     }
 

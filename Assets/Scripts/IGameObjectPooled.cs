@@ -4,7 +4,5 @@ using UnityEngine;
 
 public interface IGameObjectPooled
 {
-    void OnObjectSpawn();
-
     ObjectPool Pool { get; set; }
 }

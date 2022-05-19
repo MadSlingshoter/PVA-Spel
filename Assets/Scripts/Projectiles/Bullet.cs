@@ -25,10 +25,9 @@ public class Bullet : MonoBehaviour, IGameObjectPooled
         }
     }
 
-    public void OnObjectSpawn()
+    private void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.right * speed;
     }
 
     // Update is called once per frame
@@ -41,6 +40,7 @@ public class Bullet : MonoBehaviour, IGameObjectPooled
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
+
         PlayerMovement player = hitInfo.GetComponent<PlayerMovement>();
         if (player != null)
         {

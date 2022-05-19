@@ -55,6 +55,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (grounded)
                 Jump();
+            
+                
         }
 
         // Set animator parameters
@@ -65,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         body.velocity = new Vector2(body.velocity.x, jumpSpeed);
+        SoundManagerScript.PlaySound("jump");
         grounded = false;
     }
 

@@ -93,10 +93,16 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        
         if (currentHealth <= 0)
         {
+            SoundManagerScript.PlaySound("death");
             scoreBoard.setScore();
             currentHealth = 100;
+        }
+        else
+        {
+            SoundManagerScript.PlaySound("hit");
         }
         healthBar.SetHealth(currentHealth);
     }

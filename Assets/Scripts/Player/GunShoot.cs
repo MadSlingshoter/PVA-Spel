@@ -50,6 +50,7 @@ public class GunShoot : MonoBehaviour
         missileCooldownTimer = 0;
         var missile = missilePool.Get();
         missile.transform.SetPositionAndRotation(firepoint.position, firepoint.rotation);
+        SoundManagerScript.PlaySound("rocket");
         missile.SetActive(true);
     }
 }

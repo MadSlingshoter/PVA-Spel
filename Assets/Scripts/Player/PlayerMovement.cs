@@ -55,6 +55,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (grounded)
                 Jump();
+            
+                
         }
 
         // Set animator parameters
@@ -65,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         body.velocity = new Vector2(body.velocity.x, jumpSpeed);
+        SoundManagerScript.PlaySound("jump");
         grounded = false;
     }
 
@@ -81,14 +84,11 @@ public class PlayerMovement : MonoBehaviour
         {
             grounded = true;
         }
-        if (collision.gameObject.tag == "Bullet")
-        {
-            TakeDamage(10);
-        }
     }
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        SoundManagerScript.PlaySound("hit");
         healthBar.SetHealth(currentHealth);
     }
 

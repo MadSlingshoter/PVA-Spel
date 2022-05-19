@@ -41,6 +41,7 @@ public class GunShoot : MonoBehaviour
         gunCooldownTimer = 0;
         var bullet = bulletPool.Get();
         bullet.transform.SetPositionAndRotation(firepoint.position, firepoint.rotation);
+        SoundManagerScript.PlaySound("pistol");
         bullet.SetActive(true);
     }
 

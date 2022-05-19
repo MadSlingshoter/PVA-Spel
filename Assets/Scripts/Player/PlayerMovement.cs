@@ -81,12 +81,8 @@ public class PlayerMovement : MonoBehaviour
         {
             grounded = true;
         }
-        if (collision.gameObject.tag == "Bullet")
-        {
-            TakeDamage(10);
-        }
     }
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);

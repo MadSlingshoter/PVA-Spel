@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour, IGameObjectPooled
 {
     [SerializeField] private float speed = 20f;
+    [SerializeField] private int damage = 20;
     private bool hit;
     private Rigidbody2D rb;
 
@@ -40,7 +41,11 @@ public class Bullet : MonoBehaviour, IGameObjectPooled
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        // Player object thing with damage
+        PlayerMovement player = hitInfo.GetComponent<PlayerMovement>();
+        if (player != null)
+        {
+            player.TakeDamage(damage);
+        }
         pool.ReturnToPool(this.gameObject);
     }
 }

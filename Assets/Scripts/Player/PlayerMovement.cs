@@ -31,22 +31,26 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         float direction = 0;
-        if (Input.GetKey(left))
+        if (Input.GetKey(left) && Input.GetKey(right)) 
+        {
+            direction = 0;
+        }
+        else if (Input.GetKey(left))
         {
             direction = -1f;
         }
-        if (Input.GetKey(right))
+        else if (Input.GetKey(right))
         {
             direction = 1f;
         }
         body.velocity = new Vector2(direction * speed, body.velocity.y);
 
         // Player direction
-        if (Input.GetKey(right) && !m_FacingRight)
+        if (Input.GetKey(right) && !Input.GetKey(left) && !m_FacingRight)
         {
             Flip();
         }
-        else if (Input.GetKey(left) && m_FacingRight)
+        else if (Input.GetKey(left) && !Input.GetKey(right) && m_FacingRight)
         {
             Flip();
         }
@@ -61,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Set animator parameters
-        animator.SetBool("walking", Input.GetKey(left) || Input.GetKey(right));
+        animator.SetBool("walking", (Input.GetKey(left) || Input.GetKey(right)) && !(Input.GetKey(left) && Input.GetKey(right)));
         animator.SetBool("grounded", grounded);
     }
 

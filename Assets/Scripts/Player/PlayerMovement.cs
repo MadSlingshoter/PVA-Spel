@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public int startHealth = 100;
     [SerializeField] HealthBar healthBar;
     [SerializeField] ScoreBoard scoreBoard;
+    public ParticleSystem trail;
     public int currentHealth;
     private Rigidbody2D body;
     private Animator animator;
@@ -60,9 +61,10 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(jump))
         {
             if (grounded)
+            {
                 Jump();
-            
-                
+                CreateTrail();
+            }
         }
 
         // Set animator parameters
@@ -119,5 +121,9 @@ public class PlayerMovement : MonoBehaviour
             currentHealth = maxHealth;
         }
         healthBar.SetHealth(currentHealth);
+    }
+    void CreateTrail()
+    {
+        trail.Play();
     }
 }

@@ -50,13 +50,5 @@ public class CountDown_Start : MonoBehaviour
     int converted = (int) b;
     disvar.text = converted.ToString();
   }
-
-  void setBool(bool time){
-    timerIsRunning = time;
-  }
-
-  void setCount(float count){
-    cntdnw = count;
-  }
 }
 }

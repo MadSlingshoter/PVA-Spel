@@ -8,11 +8,13 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Time.timeScale = 1f;
     }
 
     public void Speedrun()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        Time.timeScale = 1f;
     }
 
     public void QuitGame()

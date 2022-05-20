@@ -100,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
         {
             scoreBoard.setScore();
             SoundManagerScript.PlaySound("death");
+            GetComponentInChildren<GunShoot>().setHasMissile(false);
             Respawn();
             currentHealth = 100;
         } else
@@ -125,5 +126,10 @@ public class PlayerMovement : MonoBehaviour
     void CreateTrail()
     {
         trail.Play();
+    }
+
+    public void GainMissile()
+    {
+        GetComponentInChildren<GunShoot>().setHasMissile(true);
     }
 }

@@ -27237,6 +27237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenyUI: {fileID: 832055021}
+  sceneNumber: 2
 --- !u!1 &659754141
 GameObject:
   m_ObjectHideFlags: 0

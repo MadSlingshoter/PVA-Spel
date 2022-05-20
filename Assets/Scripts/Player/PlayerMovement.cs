@@ -92,6 +92,11 @@ public class PlayerMovement : MonoBehaviour
         {
             grounded = true;
         }
+        if(collision.gameObject.tag == "Lava")
+        {
+            TakeDamage(maxHealth);
+        }
+
     }
     public void TakeDamage(int damage)
     {

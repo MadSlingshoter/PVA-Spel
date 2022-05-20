@@ -6,13 +6,16 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class CameraMovement : MonoBehaviour
 {
-    public List<Transform> targets;
+    public Transform t1, t2;
 
     public Vector3 offset;
     public float smoothTime = .5f;
     public float minZoom = 40f;
     public float maxZoom = 10f;
     public float zoomLimiter = 50f;
+
+    public float zoomFactor = 1.5f;
+    public float followTimeDelta = 0.8f;
 
     public Vector3 minvalue,maxvalue;
 
@@ -28,66 +31,29 @@ public class CameraMovement : MonoBehaviour
 
     private void LateUpdate()
     {
-
-        if (targets.Count == 0)
-        {
-            return;
-        }
-
         Move();
         Zoom();
     }
         void Move() { 
-        Vector3 centerPoint = GetCenterPoint();
-        Vector3 newPosition = centerPoint + offset;
+        Vector3 midpoint = (t1.position + t2.position) / 2f;
+        Vector3 newPosition = midpoint + offset;
 
         Vector3 boundPosition = new Vector3(
             Mathf.Clamp(newPosition.x, minvalue.x, maxvalue.x),
             Mathf.Clamp(newPosition.y, minvalue.y, maxvalue.y),
             Mathf.Clamp(newPosition.z, minvalue.z, maxvalue.z));
 
-        transform.position = Vector3.SmoothDamp(transform.position, boundPosition, ref velocity, smoothTime);
+        cam.transform.position = Vector3.Slerp(cam.transform.position, newPosition, followTimeDelta);
     }
 
     void Zoom()
     {
-        
-        float newZoom = Mathf.Lerp(maxZoom, minZoom, GetGreatestDistance() / zoomLimiter);
+
+        float distance = (t1.position - t2.position).magnitude;
+
+        float newZoom = Mathf.Lerp(maxZoom, minZoom, distance / zoomLimiter);
         cam.fieldOfView = newZoom;
        
      
     }
-    
-    float GetGreatestDistance()
-    {
-        var bounds = new Bounds(targets[0].position, Vector3.zero);
-        for (int i = 0; i < targets.Count; i++)
-        {
-            bounds.Encapsulate(targets[i].position);
-        }
-        return bounds.size.x;
-    }
-
-    Vector3 GetCenterPoint()
-    {
-        if (targets.Count == 1)
-        {
-            return targets[0].position;
-        }
-        var bounds = new Bounds(targets[0].position, Vector3.zero);
-
-        for(int i = 0; i < targets.Count; i++)
-        {
-            bounds.Encapsulate(targets[i].position);
-        }
-
-        return bounds.center;
-    }
-
-
-
-
-
-
-
 }

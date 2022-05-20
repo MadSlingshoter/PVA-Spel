@@ -13,6 +13,7 @@ public class GunShoot : MonoBehaviour
     [SerializeField] private float missileFireRate;
     private float missileCooldownTimer = Mathf.Infinity;
     [SerializeField] private ObjectPool missilePool;
+    private bool hasMissile;
 
     //Controls
     [SerializeField] private KeyCode Fire1;
@@ -28,7 +29,7 @@ public class GunShoot : MonoBehaviour
 
         gunCooldownTimer += Time.deltaTime;
 
-        if (Input.GetKey(Fire2) && missileCooldownTimer > missileFireRate)
+        if (Input.GetKey(Fire2) && missileCooldownTimer > missileFireRate && hasMissile)
         {
             FireMissile();
         }
@@ -52,5 +53,10 @@ public class GunShoot : MonoBehaviour
         missile.transform.SetPositionAndRotation(firepoint.position, firepoint.rotation);
         SoundManagerScript.PlaySound("rocket");
         missile.SetActive(true);
+    }
+
+    public void setHasMissile(bool value)
+    {
+        hasMissile = value;
     }
 }

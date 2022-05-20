@@ -22,7 +22,6 @@ public class Speedruncam : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
-        cam.orthographic = false;
     }
 
     void LateUpdate()

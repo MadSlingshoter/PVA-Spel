@@ -40,7 +40,9 @@ public class Bullet : MonoBehaviour, IGameObjectPooled
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-
+        ParticleSystem particleEffect = GameObject.Find("BulletHit").GetComponentInChildren<ParticleSystem>();
+        particleEffect.transform.position = transform.position = transform.position;
+        particleEffect.Play();
         PlayerMovement player = hitInfo.GetComponent<PlayerMovement>();
         if (player != null)
         {

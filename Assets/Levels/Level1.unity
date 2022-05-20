@@ -16987,14 +16987,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a538dddbec80fbf47aad02cf5edce9d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets:
-  - {fileID: 1971865990}
-  - {fileID: 864150436}
-  offset: {x: 0, y: 2.48, z: -8.78}
+  t1: {fileID: 1971865990}
+  t2: {fileID: 864150436}
+  offset: {x: 0, y: 0, z: -30}
   smoothTime: 0.5
-  minZoom: 150
-  maxZoom: 90
+  minZoom: 62
+  maxZoom: 60
   zoomLimiter: 50
+  zoomFactor: 1.5
+  followTimeDelta: 0.8
   minvalue: {x: -2.68, y: 3.2, z: -10}
   maxvalue: {x: 30, y: 30, z: -10}
 --- !u!1 &522643910
@@ -28185,7 +28186,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &1650675119
 CanvasRenderer:
   m_ObjectHideFlags: 0

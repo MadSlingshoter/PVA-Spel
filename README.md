@@ -8,6 +8,8 @@ Aim up and down. Your gun shoots bullets that travel in a straight line. Shoot y
 
 Pick up the missile pack to be able to fire your missile until you die. Your missile is homing towards the closest player, including yourself. Use with care.
 
+Open the pause menu with the escape key.
+
 Player 1 controls:
 
 - Right: f

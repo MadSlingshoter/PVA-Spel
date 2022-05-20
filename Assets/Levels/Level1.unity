@@ -17115,6 +17115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenyUI: {fileID: 832055021}
+  sceneNumber: 1
 --- !u!61 &522643916
 BoxCollider2D:
   m_ObjectHideFlags: 0

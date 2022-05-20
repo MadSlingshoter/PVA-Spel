@@ -8,6 +8,8 @@ public class PauseScript : MonoBehaviour
 
     public static bool GamePaused = false;
     public GameObject pauseMenyUI;
+    [SerializeField]
+    private int sceneNumber;
 
     
     void Update()
@@ -46,6 +48,6 @@ public class PauseScript : MonoBehaviour
     }
     public void GotoMeny()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - sceneNumber);
     }
 }

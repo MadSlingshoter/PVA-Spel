@@ -17169,7 +17169,7 @@ GameObject:
   - component: {fileID: 538586495}
   - component: {fileID: 538586497}
   m_Layer: 5
-  m_Name: Player 2 Score
+  m_Name: Player 1 Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17224,8 +17224,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190321
-  m_fontColor: {r: 0.9433962, g: 0, b: 0, a: 1}
+    rgba: 4278255360
+  m_fontColor: {r: 0, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -97176,7 +97176,7 @@ GameObject:
   - component: {fileID: 1952887266}
   - component: {fileID: 1952887268}
   m_Layer: 5
-  m_Name: Player1 Score
+  m_Name: Player 2 Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97231,8 +97231,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279303936
-  m_fontColor: {r: 0, g: 1, b: 0.061980247, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -97342,6 +97342,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165f5141a359a044795efa4544753050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cntdnw: 3
+  timerIsRunning: 1
   disvar: {fileID: 1650675118}
   player2: {fileID: 864150430}
   player1: {fileID: 1971865988}

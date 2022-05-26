@@ -8,6 +8,8 @@ Aim up and down and diagonally. Your gun shoots bullets that travel in a straigh
 
 Pick up the missile pack to be able to fire your very damaging missile until you die. Your missile is homing towards the closest player, including yourself. Use with care.
 
+The ice cream at the top refills your health and will even fill you up a bit above your starting health.
+
 Click on the Solero logo to enjoy a practice single player map to practice your movement.
 
 Open the pause menu with the escape key.
